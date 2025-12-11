@@ -11,6 +11,93 @@ body {
   padding: 2rem;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://i.pinimg.com/originals/44/6e/3b/446e3b79395a287ca32f7977dd83b290.jpg")
+    center/cover no-repeat;
+  filter: blur(6px);
+  transform: scale(1.05); /* removes edge blur */
+  z-index: -2; /* stays behind everything */
+}
+
+/* Fireflies stay above blurred background */
+.firefly-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+
+/* Firefly base */
+.firefly {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 0;
+  pointer-events: none;
+  animation: float 20s infinite alternate ease-in-out;
+}
+
+.firefly::before,
+.firefly::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform-origin: -50vw;
+}
+
+/* Dark core */
+.firefly::before {
+  background: black;
+  opacity: 0.4;
+  animation: spin 12s infinite linear;
+}
+
+/* Glow */
+.firefly::after {
+  background: yellow;
+  opacity: 0;
+  box-shadow: 0 0 0px 0px yellow;
+  animation: spin 12s infinite linear, flash 6s infinite ease-in-out;
+}
+
+/* Random Movement */
+@keyframes float {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(-50vw, 20vh) scale(0.8); }
+  50%  { transform: translate(30vw, -40vh) scale(1.2); }
+  75%  { transform: translate(-20vw, 30vh) scale(0.9); }
+  100% { transform: translate(40vw, -10vh) scale(1); }
+}
+
+/* Glow flicker */
+@keyframes flash {
+  0%, 30%, 100% {
+    opacity: 0;
+    box-shadow: 0 0 0px 0px yellow;
+  }
+  5% {
+    opacity: 1;
+    box-shadow: 0 0 12px 3px yellow;
+  }
+}
+
+/* Rotation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+
 /* Header & Controls */
 header {
   text-align: center;
@@ -25,12 +112,122 @@ header h1 {
   margin-bottom: 0.5rem;
 }
 
+.app-header {
+  position: relative;
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* Position container in the top-right */
+.auth-buttons {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.auth-buttons button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* --- Watchlist Controls --- */
+.watchlist-controls {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* A small tidy group */
+.control-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.control-label {
+  color: #ffd85c;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+/* Dropdown styling */
+.control-select {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  color: white;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.control-select:focus {
+  border-color: #ffd85c;
+}
+
+/* Rating input */
+.rating-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #1c1c1c;
+  border: 1px solid #333;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+}
+
+.rating-input {
+  background: transparent;
+  border: none;
+  color: white;
+  width: 40px;
+  font-size: 1rem;
+  text-align: center;
+  outline: none;
+}
+
+.rating-outof {
+  color: #777;
+  font-size: 0.85rem;
+}
+
 .controls {
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+}
+
+.card-image {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.poster-placeholder {
+  color: #777;
+  font-size: 1.2rem;
 }
 
 .search-input {
@@ -48,8 +245,8 @@ header h1 {
 
 .tab-btn {
   background: transparent;
-  border: 1px solid #333;
-  color: #888;
+  border: 1px solid black;
+  color: white;
   padding: 0.8rem 1.5rem;
   border-radius: 50px;
   cursor: pointer;
@@ -80,11 +277,14 @@ header h1 {
   display: flex;
   flex-direction: column;
 }
+.media-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
 
 .media-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-  border-color: rgba(255, 216, 92, 0.3);
+  transform: scale(1.06);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.12);
+  z-index: 10;
 }
 
 .card-image {
@@ -123,8 +323,3 @@ header h1 {
 .btn-save { background: #333; color: #aaa; }
 .btn-save:hover { background: #444; }
 .btn-save.active { background: #FFD85C; color: #000; } /* Brand Color */
-
-/* Favorite Button Styling */
-.btn-fav { background: #333; color: #aaa; }
-.btn-fav:hover { background: #444; }
-.btn-fav.active { background: #ff4757; color: white; }
