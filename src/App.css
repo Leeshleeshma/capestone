@@ -129,6 +129,9 @@ header h1 {
   padding: 8px 14px;
   border-radius: 8px;
   font-size: 14px;
+  color: white;
+  background-color: #333;
+  border: 1px solid #FFD85C;
   cursor: pointer;
 }
 

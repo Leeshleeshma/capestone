@@ -1,16 +1,34 @@
-# React + Vite
+# Movie Recommendation System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application that allows users to browse movies, TV shows, and upcoming releases, and curate a personal watchlist.
 
-Currently, two official plugins are available:
+## 📋 Features
+- **Browse Media:** View lists of movies, TV shows, and upcoming releases.
+- **Personal Watchlist:** Add/Remove items to a saved list.
+- **Track Status:** Mark items as "Plan to Watch", "Watching", or "Watched".
+- **Rate Content:** Give a 1-5 star rating to items in your watchlist.
+- **Authentication:** Secure login via Clerk.
+- **Responsive UI:** Interactive card animations and dark mode aesthetic.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## 🏗 Architecture
+This project follows a **MERN Stack** (MongoDB, Express, React, Node.js) architecture.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### System Flow
+1. **Client (React):** Handles UI, animations, and user interaction.
+2. **Auth (Clerk):** Manages user sessions and identity.
+3. **API (Express):** RESTful endpoints (`/movies`, `/watchlist`, `/tv`, `/upcoming`) that process requests.
+4. **Database (MongoDB):** Stores movie data and user watchlists.
 
-## Expanding the ESLint configuration
+### Architecture Diagram
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+    User[User] -->|Interacts| Client[React Frontend]
+    Client -->|Auth Request| Clerk[Clerk Authentication]
+    Client -->|API Requests| Server[Node/Express Backend]
+    
+    Backend Services
+    Server -->|Read/Write| DB[(MongoDB Atlas)]
+    Server -->|Fetch Metadata| ExternalAPI[External Movie APIs]
+    
+    Clerk -->|Token| Client
+    Client -->|Authorized Request + Token| Server
