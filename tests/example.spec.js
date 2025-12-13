@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 
 test('search functionality works', async ({ page }) => {
   // Go to the app
-  await page.goto('http://localhost:5173');
+  await page.goto('https://spatial-genius-476614-m3.web.app/');
 
   // Ensure the main title is visible
   await expect(page.getByText('Midnight Kernel')).toBeVisible();
