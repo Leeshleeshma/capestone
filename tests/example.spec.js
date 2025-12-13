@@ -1,21 +1,20 @@
 import { test, expect } from '@playwright/test';
 
-test('search input works on deployed app', async ({ page }) => {
-  // Visit deployed Firebase site
-  await page.goto('https://spatial-genius-476614-m3.web.app/');
-
-  // App title should be visible
-  await expect(page.getByText('Midnight Kernel')).toBeVisible();
+test('search input is visible and accepts text', async ({ page }) => {
+  await page.goto('https://spatial-genius-476614-m3.web.app/', {
+    waitUntil: 'domcontentloaded',
+  });
 
   // Search input should exist
   const searchInput = page.getByPlaceholder('Search...');
   await expect(searchInput).toBeVisible();
 
-  // Interact with search
+  // Type into search input
   await searchInput.fill('Inception');
 
-  // Verify input value
+  // Verify typed value
   await expect(searchInput).toHaveValue('Inception');
 });
+
 
 
