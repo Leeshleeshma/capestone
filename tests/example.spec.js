@@ -6,7 +6,7 @@ test('search functionality works', async ({ page }) => {
   await page.goto('http://localhost:5173');
 
   // Ensure the main title is visible
-  await expect(page.getByText('Media Recommender')).toBeVisible();
+  await expect(page.getByText('Midnight Kernel')).toBeVisible();
 
   // Wait for media grid to load
   await page.waitForSelector('.media-grid .media-card');
