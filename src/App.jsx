@@ -204,12 +204,12 @@ function App() {
       <Toaster position="bottom-center" />
 
       <header>
-        <h1>Media Recommender</h1>
+        <h1>Midnight Kernel</h1>
         {/* Personalized greeting */}
         <SignedIn>
           <p className="welcome-text">Welcome back, {user?.firstName} 👋</p>
         </SignedIn>
-        <p>Curate your entertainment feed</p>
+        <p className="punch-line">Dark mode for the silver screen, Cinema that never sleeps.</p>
 
         <div className="auth-buttons">
           <SignedOut>

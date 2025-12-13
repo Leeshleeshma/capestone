@@ -105,11 +105,18 @@ header {
 }
 
 header h1 {
-  font-size: 2.5rem;
-  background: linear-gradient(90deg, #FFD85C, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: 'Tangerine', serif;
+  font-size: 48px;
+  text-shadow: 4px 4px 4px #aaa;
+  color: #FFD85C;
   margin-bottom: 0.5rem;
+}
+
+.punch-line {
+  font-family: 'Tangerine', serif;
+  color: white;
+  font-size: 35px;
+  margin-bottom: 1rem;
 }
 
 .app-header {
@@ -244,7 +251,10 @@ header h1 {
   transition: border-color 0.3s;
 }
 
-.search-input:focus { border-color: #FFD85C; }
+.search-input:focus { 
+  border-color: #FFD85C; 
+  box-shadow: 0 0 0 2px rgba(255,216,92,0.4);
+}
 
 .tab-btn {
   background: transparent;
@@ -276,17 +286,17 @@ header h1 {
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.25s ease , box-shadow 0.25s ease;
   display: flex;
   flex-direction: column;
-}
-.media-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-family: "Texturina", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 .media-card:hover {
-  transform: scale(1.06);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.12);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
   z-index: 10;
 }
 
@@ -298,11 +308,13 @@ header h1 {
   justify-content: center;
   color: #555;
   font-size: 3rem;
+  transform: scale(1.05);
 }
 
 .card-content { padding: 1.2rem; flex-grow: 1; }
 .card-content h3 { margin-bottom: 0.5rem; color: #fff; }
 .card-meta { color: #888; font-size: 0.9rem; }
+
 
 /* Action Buttons */
 .card-actions {
