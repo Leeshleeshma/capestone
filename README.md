@@ -2,6 +2,12 @@
 
 A full-stack web application that allows users to browse movies, TV shows, and upcoming releases, and curate a personal watchlist.
 
+## Frontend URL - https://spatial-genius-476614-m3.web.app
+## Backend URL - https://backend-service-440370873465.us-central1.run.app/movies
+## Demo Video URL - 
+## Frontend Source Code - https://github.com/Leeshleeshma/capestone
+## Backend Source Code - https://github.com/Leeshleeshma/Backend-capestone
+
 ## 📋 Features
 - **Browse Media:** View lists of movies, TV shows, and upcoming releases.
 - **Personal Watchlist:** Add/Remove items to a saved list.
@@ -273,7 +279,7 @@ Prerequisites:
 
 Ensure your backend folder has a package.json with a start script (e.g., "start": "node server.js").
 
-Ensure your server.js listens on process.env.PORT (Cloud Run sets this automatically).
+Ensure your App.js listens on process.env.PORT (Cloud Run sets this automatically).
 
 Steps:
 
@@ -317,6 +323,33 @@ Build the Application: Generate the production build of your React app.
 npm run build
 
 Deploy:
-firebase deploy --only hosting
+firebase deploy 
+
+## Sequence Diagram
+
+![SQ](Sequence-midnightKernel.png)
+
+## Test file Report
+
+![testReport](<Test Report.png>)
+
+Commands to run:-
+npm init playwright@latest
+npx playwright test
+npx playwright show-report --host 0.0.0.0
+
+## Attribution of external sources
+
+### LLM Models -
+ChatGPT
+Gemini
+
+## External links
+Playwright Testing - https://playwright.dev/docs/intro
+Clerk Authentication - https://clerk.com/
+Eraser Sequence Diagram - https://www.eraser.io/ai/sequence-diagram-generator
+TMDB API - https://developer.themoviedb.org/docs/getting-started
+Watchmode API - https://api.watchmode.com/docs
+
 
 
