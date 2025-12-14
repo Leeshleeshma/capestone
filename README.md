@@ -4,7 +4,7 @@ A full-stack web application that allows users to browse movies, TV shows, and u
 
 ## Frontend URL - https://spatial-genius-476614-m3.web.app
 ## Backend URL - https://backend-service-440370873465.us-central1.run.app/movies
-## Demo Video URL - <video controls src="Demo Video.mp4" title="Midnight Kernel"></video>
+## Demo Video URL - https://www.loom.com/share/e495baf2017a41f3af764a9e38b61cc7
 ## Frontend Source Code - https://github.com/Leeshleeshma/capestone
 ## Backend Source Code - https://github.com/Leeshleeshma/Backend-capestone
 
