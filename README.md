@@ -325,6 +325,10 @@ npm run build
 Deploy:
 firebase deploy 
 
+## Setup Instructions
+
+[Setup](setupInstructions.md)
+
 ## Sequence Diagram
 
 ![SQ](Sequence-midnightKernel.png)
